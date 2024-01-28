@@ -1,17 +1,17 @@
 <template>
-    <v-card class="p-3">
+    <v-card class="p-3" :title="model.name">
         <!-- <keep-alive> -->
-        <div v-for="field in model.fields" :key="field.name">
-            <component :is="field.component" v-bind="field" v-model="field.modelValue" />
+        <div v-for="field in model.fields" :key="field.name" class="mt-4">
+            <component :is="field.component" v-bind="field" v-model="model.value[field.name]" class="mb-2" />
         </div>
         <!-- </keep-alive> -->
         <slot name="more"></slot>
         <slot name="actions">
             <div class="flex justify-end">
-                <v-btn prepend-icon="mdi-reload" class="p-2">
+                <v-btn prepend-icon="mdi-reload" class="p-2" @click="reset()">
                     Reset
                 </v-btn>
-                <v-btn prepend-icon="mdi-content-save" class="p-2">
+                <v-btn prepend-icon="mdi-content-save" class="p-2" @click="saveFn(model.value)">
                     Save
                 </v-btn>
                 <slot name="moreActions"></slot>
@@ -21,8 +21,7 @@
 </template>
 
 <script setup>
-import { VTextField, VBtn } from 'vuetify/components'
-// import VCalendar from './VCalendar.vue';
+import { VBtn } from 'vuetify/components'
 import styler from '../core/styler.js'
 import parser from '../core/parser.js'
 import { onMounted, ref } from 'vue'
@@ -31,14 +30,20 @@ const $ = defineProps({
     model: {
         type: Object,
         required: true
+    },
+    saveFn: {
+        type: Function
     }
 })
 
-const test = ref();
+let originalValue;
 onMounted(() => {
-    console.log($.model)
-    $.model.fields = parser($.model)
+    $.model = parser($.model)
     $.model.fields = styler($.model)
-    console.log($.model)
+    originalValue = JSON.parse(JSON.stringify($.model.value))
 })
+
+function reset() {
+    $.model.value = JSON.parse(JSON.stringify(originalValue))
+}
 </script>

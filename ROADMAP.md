@@ -8,29 +8,42 @@ Implement basic types
 
 Nullable
 
-- String
-- Int
-- Boolean
-- Datetime
-- Relation
+- String ✅
+- Int ✅
+- Boolean ⚠️ Only works null first time
+- Datetime ⚠️ Clear, not change model (change parsedModel)
+- Relation ✅
 
-Default values
+Default values (Basic implementation)
 
-- String
-- Int
-- Boolean
-- Datetime
-- Relation
+- String ✅
+- Int ✅
+- Boolean ✅
+- Datetime ✅
+- Relation ✅
 
-Requerids //hint
+Requireds //hint
 
-- String
-- Int
-- Boolean
-- Datetime
-- Relation
+- String ✅
+- Int ✅
+- Boolean ⚠️ Not working by default component
+- Datetime ✅
+- Relation ✅
 
 Actions
 
+- Save ✅
+- Reset ✅
+
+Actions in JS
+
 - Save
 - Reset
+
+Fix vue warining
+(Vue received a Component that was made a reactive object...)
+
+Parser adaptable
+Styler adaptable
+
+Better index page (view json, view result object)

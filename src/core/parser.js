@@ -1,33 +1,41 @@
 import VCalendar from "../components/VCalendar.vue";
 
-export default ({ fields }) => {
-	for (const field of fields) {
-		const type = field.fieldType.toLowerCase();
-		switch (type) {
-			case "string":
-				field.component = "VTextField";
-				break;
-			case "int":
-				field.component = "VTextField";
-				field.type = "number";
-				break;
-			case "boolean":
-				field.component = "VCheckbox";
-				field.modelValue = !!field.modelValue;
-				break;
-			case "datetime":
-				field.component = VCalendar;
-				break;
-			case "relation":
-				field.component = "VAutocomplete";
-				const values = field.values.map((value) =>
-					Object.values(value).join(" - "),
-				);
-				field.items = values;
-				break;
-			default:
-				console.warn(field.fieldType, "type is not implemented yet");
-		}
-	}
-	return fields;
+export default (model) => {
+    for (const field of model.fields) {
+        const type = field.fieldType.toLowerCase();
+        model.value[field.name] = field.default;
+        if (field.isRequired)
+            field.rules = [value => !!value || 'Field is required']
+
+        switch (type) {
+            case "string":
+                field.component = "VTextField";
+                field.clearable = true;
+                break;
+            case "int":
+                field.component = "VTextField";
+                field.type = "number";
+                field.clearable = true;
+                break;
+            case "boolean":
+                field.component = "VCheckbox";
+                if (!field.isRequired) field.indeterminate = true;
+                model.value[field.name] = field.default;
+                break;
+            case "datetime":
+                field.component = VCalendar;
+                field.clearable = true;
+                break;
+            case "relation":
+                field.component = "VAutocomplete";
+                field.items = field.values.map((value) =>
+                    Object.values(value).join(" - "),
+                );
+                field.clearable = true;
+                break;
+            default:
+                console.warn(field.fieldType, "type is not implemented yet");
+        }
+    }
+    return model;
 };

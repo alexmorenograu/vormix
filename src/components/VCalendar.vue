@@ -1,8 +1,8 @@
 <template>
     <v-menu v-model="show" :close-on-content-click="false">
         <template v-slot:activator="{ props }">
-            <v-text-field v-model="parsedModel" :label="$.label" :variant="$.variant" readonly @click="() => show = !show"
-                v-bind="props"></v-text-field>
+            <v-text-field v-model="parsedModel" :label="$.label" :variant="$.variant" :clearable="$.clearable"
+                :rules="$.rules" @click="() => show = !show" v-bind="props" class="mb-2" />
         </template>
         <v-list>
             <v-list-item class="flex justify-center">
@@ -31,6 +31,13 @@ const $ = defineProps({
     },
     variant: {
         type: String,
+    },
+    clearable: {
+        type: Boolean,
+        default: true
+    },
+    rules: {
+        type: Array,
     }
 })
 </script>

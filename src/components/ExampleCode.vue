@@ -12,32 +12,43 @@ const model = ref({
     name: 'Book',
     fields: [
         {
-            name: 'Name (String)',
+            label: 'Name (String)',
+            name: 'name',
             fieldType: 'String',
+            isRequired: true
         },
         {
-            name: 'Age (Numeric)',
+            label: 'Age (Numeric)',
+            name: 'age',
             fieldType: 'Int',
+            isRequired: true
         },
         {
-            name: 'Is human? (Boolean)',
+            label: 'Is human? (Boolean)',
+            name: 'isHuman',
             fieldType: 'Boolean',
         },
         {
-            name: 'Birth (Datetime)',
+            label: 'Birth (Datetime)',
+            name: 'birth',
             fieldType: 'DateTime',
+            isRequired: true
         },
         {
-            name: 'Country (Relation)',
+            label: 'Country (Relation)',
+            name: 'country',
             fieldType: 'Relation',
             values: [
                 { id: 1, name: 'EEUU' },
                 { id: 2, name: 'Spain' }
-            ]
+            ],
+            isRequired: true
         }
     ],
     actions: {}, // TODO
-    values: {}, // TODO
+    value: {
+        name: 'This is an default value',
+    },
 })
 </script>
 
