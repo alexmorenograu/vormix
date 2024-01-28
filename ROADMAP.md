@@ -11,7 +11,7 @@ Nullable
 - String ✅
 - Int ✅
 - Boolean ⚠️ Only works null first time
-- Datetime ⚠️ Clear, not change model (change parsedModel)
+- Datetime ✅
 - Relation ✅
 
 Default values (Basic implementation)
@@ -34,6 +34,8 @@ Actions
 
 - Save ✅
 - Reset ✅
+
+New prop isNew (if is new set default value) ✅
 
 Actions in JS
 

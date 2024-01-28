@@ -2,7 +2,7 @@
     <v-card class="p-3" :title="model.name">
         <!-- <keep-alive> -->
         <div v-for="field in model.fields" :key="field.name" class="mt-4">
-            <component :is="field.component" v-bind="field" v-model="model.value[field.name]" class="mb-2" />
+            <component :is="field.component" v-bind="field" v-model="model.data[field.name]" class="mb-2" />
         </div>
         <!-- </keep-alive> -->
         <slot name="more"></slot>
@@ -11,7 +11,7 @@
                 <v-btn prepend-icon="mdi-reload" class="p-2" @click="reset()">
                     Reset
                 </v-btn>
-                <v-btn prepend-icon="mdi-content-save" class="p-2" @click="saveFn(model.value)">
+                <v-btn prepend-icon="mdi-content-save" class="p-2" @click="saveFn && saveFn(model.data)">
                     Save
                 </v-btn>
                 <slot name="moreActions"></slot>
@@ -32,18 +32,23 @@ const $ = defineProps({
         required: true
     },
     saveFn: {
-        type: Function
+        type: Function,
+        // default: (v) => console.log(v)
+    },
+    isNew: {
+        type: Boolean,
+        default: true
     }
 })
 
 let originalValue;
 onMounted(() => {
-    $.model = parser($.model)
+    $.model = parser($.model, $.isNew)
     $.model.fields = styler($.model)
-    originalValue = JSON.parse(JSON.stringify($.model.value))
+    originalValue = JSON.parse(JSON.stringify($.model.data))
 })
 
 function reset() {
-    $.model.value = JSON.parse(JSON.stringify(originalValue))
+    $.model.data = JSON.parse(JSON.stringify(originalValue))
 }
 </script>

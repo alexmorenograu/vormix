@@ -46,7 +46,7 @@ const model = ref({
         }
     ],
     actions: {}, // TODO
-    value: {
+    data: {
         name: 'This is an default value',
     },
 })

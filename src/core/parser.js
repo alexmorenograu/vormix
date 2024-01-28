@@ -1,12 +1,14 @@
-import VCalendar from "../components/VCalendar.vue";
-
-export default (model) => {
+export default (model, isNew) => {
     for (const field of model.fields) {
-        const type = field.fieldType.toLowerCase();
-        model.value[field.name] = field.default;
+        // if isNew set default value
+        if (isNew && field.default)
+            model.data[field.name] = field.default;
+
+        // if field isRequired add rule if is empty
         if (field.isRequired)
             field.rules = [value => !!value || 'Field is required']
 
+        const type = field.fieldType.toLowerCase();
         switch (type) {
             case "string":
                 field.component = "VTextField";
@@ -20,10 +22,9 @@ export default (model) => {
             case "boolean":
                 field.component = "VCheckbox";
                 if (!field.isRequired) field.indeterminate = true;
-                model.value[field.name] = field.default;
                 break;
             case "datetime":
-                field.component = VCalendar;
+                field.component = 'VCalendar';
                 field.clearable = true;
                 break;
             case "relation":

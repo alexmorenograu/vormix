@@ -29,10 +29,10 @@ bunx @biomejs/biome format --write ./src
 
 ### Use
 
-- [Framework](https://vuejs.org/)
-- [Builder](https://vitejs.dev/)
-- [Components](https://vuetifyjs.com/)
-- [Components(Only calendar)](https://primevue.org/calendar/#api.calendar)
-- [Styling](https://tailwindcss.com/)
-- [Icons](https://pictogrammers.com/)
-- [Linter && Formatter](https://biomejs.dev/)
+- [Framework - Vue](https://vuejs.org/)
+- [Builder - Vite](https://vitejs.dev/)
+- [Components - Vuetify](https://vuetifyjs.com/)
+- [Components(Only calendar) - PrimeVue](https://primevue.org/calendar/#api.calendar)
+- [Styling - Tailwind](https://tailwindcss.com/)
+- [Icons - Pictogrammers](https://pictogrammers.com/)
+- [Linter && Formatter - Biome](https://biomejs.dev/)

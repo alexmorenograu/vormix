@@ -2,11 +2,11 @@
     <v-menu v-model="show" :close-on-content-click="false">
         <template v-slot:activator="{ props }">
             <v-text-field v-model="parsedModel" :label="$.label" :variant="$.variant" :clearable="$.clearable"
-                :rules="$.rules" @click="() => show = !show" v-bind="props" class="mb-2" />
+                :rules="$.rules" @click="() => show = !show" v-bind="props" class="mb-2" @click:clear="model = null" />
         </template>
         <v-list>
             <v-list-item class="flex justify-center">
-                <Calendar v-model="model" inline class="p-2" showTime />
+                <Calendar v-model="model" inline :show-time="$.showTime" />
             </v-list-item>
         </v-list>
     </v-menu>
@@ -38,6 +38,21 @@ const $ = defineProps({
     },
     rules: {
         type: Array,
-    }
+    },
+    showTime: {
+        type: Boolean,
+        default: true
+    },
+    timeOnly: {
+        type: Boolean,
+        default: false
+    },
 })
 </script>
+<style>
+.p-datepicker {
+    background: inherit;
+    border: 2px solid rgb(255, 255, 255, 0.3);
+    padding: 5px;
+}
+</style>
