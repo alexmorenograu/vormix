@@ -1,12 +1,11 @@
 export default (model, isNew) => {
     for (const field of model.fields) {
         // if isNew set default value
-        if (isNew && field.default)
-            model.data[field.name] = field.default;
+        if (isNew && field.default) model.data[field.name] = field.default;
 
         // if field isRequired add rule if is empty
         if (field.isRequired)
-            field.rules = [value => !!value || 'Field is required']
+            field.rules = [(value) => !!value || "Field is required"];
 
         const type = field.fieldType.toLowerCase();
         switch (type) {
@@ -24,7 +23,7 @@ export default (model, isNew) => {
                 if (!field.isRequired) field.indeterminate = true;
                 break;
             case "datetime":
-                field.component = 'VCalendar';
+                field.component = "VCalendar";
                 field.clearable = true;
                 break;
             case "relation":

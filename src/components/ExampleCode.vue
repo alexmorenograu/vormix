@@ -1,54 +1,68 @@
 <template>
-    <v-card>
-        <!-- {{ JSON.stringify(model, null, 4) }} -->
-    </v-card>
-    <MetaForm :model />
+    <div class="grid grid-cols-3 gap-2">
+        <v-card title="Input">
+            <pre class="mt-6 text-sky-600 text-xs">
+                {{ JSON.stringify(vanillaModel, null, 2) }}
+            </pre>
+        </v-card>
+        <MetaForm :model />
+        <v-card title="Output">
+            <pre class="mt-6 text-sky-600 text-xs">
+                {{ JSON.stringify(model, null, 2) }}
+            </pre>
+        </v-card>
+    </div>
 </template>
 <script setup>
 import MetaForm from './MetaForm.vue'
 import { ref } from 'vue'
 
-const model = ref({
-    name: 'Book',
-    fields: [
-        {
-            label: 'Name (String)',
-            name: 'name',
-            fieldType: 'String',
-            isRequired: true
-        },
-        {
-            label: 'Age (Numeric)',
-            name: 'age',
-            fieldType: 'Int',
-            isRequired: true
-        },
-        {
-            label: 'Is human? (Boolean)',
-            name: 'isHuman',
-            fieldType: 'Boolean',
-        },
-        {
-            label: 'Birth (Datetime)',
-            name: 'birth',
-            fieldType: 'DateTime',
-            isRequired: true
-        },
-        {
-            label: 'Country (Relation)',
-            name: 'country',
-            fieldType: 'Relation',
-            values: [
-                { id: 1, name: 'EEUU' },
-                { id: 2, name: 'Spain' }
-            ],
-            isRequired: true
-        }
+const stringField = {
+    label: 'Name (String)',
+    name: 'name',
+    fieldType: 'String',
+    isRequired: true
+}
+
+const intField = {
+    name: 'age',
+    fieldType: 'Int',
+    default: 23
+}
+
+const dateTimeField = {
+    name: 'birth',
+    fieldType: 'DateTime',
+}
+
+const relationField = {
+    name: 'country',
+    fieldType: 'Relation',
+    values: [
+        { id: 1, name: 'EEUU' },
+        { id: 2, name: 'Spain' }
     ],
-    actions: {}, // TODO
+}
+
+const booleanField = {
+    name: 'isHuman',
+    fieldType: 'Boolean',
+}
+
+const fields = [
+    stringField,
+    intField,
+    dateTimeField,
+    relationField,
+    booleanField
+];
+const vanillaModel = {
+    name: 'Book',
+    fields,
     data: {
         name: 'This is an default value',
     },
-})
+}
+const model = ref({ ...vanillaModel })
 </script>
 

@@ -5,13 +5,11 @@ import ExampleCode from './components/ExampleCode.vue'
 
 <template>
     <header>
-        <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
+        <img alt="Vue logo" class="logo" src="./assets/metaform.png" width="125" height="125" />
         <div class="wrapper">
             <LeftIndex msg="MetaForm" />
         </div>
     </header>
-
     <main class="mt-5">
         <ExampleCode />
     </main>
@@ -31,7 +29,9 @@ header {
     header {
         display: flex;
         place-items: center;
+        justify-content: center;
         padding-right: calc(var(--section-gap) / 2);
+        margin-bottom: 50px;
     }
 
     .logo {

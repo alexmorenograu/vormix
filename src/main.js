@@ -8,32 +8,32 @@ import "./assets/tailwind.css";
 
 import Calendar from "primevue/calendar";
 import PrimeVue from "primevue/config";
-import VCalendar from "./components/VCalendar.vue";
 //in main.js
 import "primevue/resources/themes/aura-dark-green/theme.css";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import VCalendar from "./components/VCalendar.vue";
 
 const vuetify = createVuetify({
-    components,
-    directives,
-    theme: {
-        defaultTheme: "dark",
-        dark: {
-            colors: {
-                primary: "#00FF80",
-            },
-        },
-    },
-    defaults: {
-        VBtn: { variant: "outlined" }, //not working
-    },
+	components,
+	directives,
+	theme: {
+		defaultTheme: "dark",
+		dark: {
+			colors: {
+				primary: "#00FF80",
+			},
+		},
+	},
+	defaults: {
+		VBtn: { variant: "outlined" }, //not working
+	},
 });
 
 createApp(App)
-    .use(vuetify)
-    .use(PrimeVue)
-    .component("Calendar", Calendar)
-    .component("VCalendar", VCalendar)
-    .mount("#app");
+	.use(vuetify)
+	.use(PrimeVue)
+	.component("Calendar", Calendar)
+	.component("VCalendar", VCalendar)
+	.mount("#app");
