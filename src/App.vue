@@ -5,9 +5,9 @@ import ExampleCode from './components/ExampleCode.vue'
 
 <template>
     <header>
-        <img alt="Vue logo" class="logo" src="./assets/metaform.png" width="125" height="125" />
+        <img alt="Vormix logo" class="logo" src="./assets/vormix.png" width="125" height="125" />
         <div class="wrapper">
-            <LeftIndex msg="Metaform" />
+            <LeftIndex msg="Vormix" />
         </div>
     </header>
     <main class="mt-5">

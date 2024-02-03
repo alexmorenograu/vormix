@@ -5,7 +5,7 @@
                 {{ JSON.stringify(vanillaModel, null, 2) }}
             </pre>
         </v-card>
-        <MetaForm v-model="model" />
+        <Vormix v-model="model" />
         <v-card title="Output">
             <pre class="mt-6 text-sky-600 text-xs">
                 {{ JSON.stringify(model, null, 2) }}

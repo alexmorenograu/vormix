@@ -1,5 +1,5 @@
 {
-    "name": "metaform",
+    "name": "vormix",
     "version": "0.1.0",
     "type": "module",
     "scripts": {
@@ -25,10 +25,10 @@
     "peerDependencies": {
         "vue": "^3.0.0"
     },
-    "main": "./dist/metaform.cjs",
-    "module": "./dist/metaform.js",
+    "main": "./dist/vormix.cjs",
+    "module": "./dist/vormix.js",
     "exports": {
-        ".": "./dist/metaform.js",
+        ".": "./dist/vormix.js",
         "./styles.css": "./dist/style.css"
     },
     "files": [

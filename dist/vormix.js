@@ -5973,7 +5973,7 @@ const Tm = {
   }
   return e.parsed = !0, e;
 }, Mm = { class: "mt-6 grid grid-cols-2 md:grid-cols-1 gap-2" }, Bm = { class: "grid grid-flow-col gap-2 auto-cols-min justify-end" }, Em = {
-  __name: "MetaForm",
+  __name: "Vormix",
   props: /* @__PURE__ */ fs({
     saveFn: {
       type: Function
@@ -26559,11 +26559,11 @@ const US = {
   }
 }), XS = {
   install: (e, t) => {
-    e.use(GS), e.use(bf), e.component("Calendar", Is), e.component("VCalendar", Tm), e.component("MetaForm", Em);
+    e.use(GS), e.use(bf), e.component("Calendar", Is), e.component("VCalendar", Tm), e.component("Vormix", Em);
   }
 };
 export {
-  Em as MetaForm,
   Tm as VCalendar,
+  Em as Vormix,
   XS as default
 };

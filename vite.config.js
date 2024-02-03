@@ -18,10 +18,10 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: resolve(__dirname, "src/MetaFormPlugin.js"),
-            name: "MetaForm",
+            entry: resolve(__dirname, "src/VormixPlugin.js"),
+            name: "Vormix",
             formats: ["es", "cjs"],
-            fileName: (format) => (format === "es" ? "metaform.js" : "metaform.cjs"),
+            fileName: (format) => (format === "es" ? "vormix.js" : "vormix.cjs"),
         },
         rollupOptions: {
             external: ["vue"],

@@ -8,7 +8,7 @@
 import PrimeVue from "primevue/config";
 import Calendar from "primevue/calendar";
 import VCalendar from "./components/VCalendar.vue";
-import MetaForm from "./components/MetaForm.vue";
+import Vormix from "./components/Vormix.vue";
 
 // Use vuetify
 import { createVuetify } from "vuetify";
@@ -37,8 +37,8 @@ export default {
         app.use(PrimeVue)
         app.component("Calendar", Calendar)
         app.component("VCalendar", VCalendar)
-        app.component("MetaForm", MetaForm)
+        app.component("Vormix", Vormix)
         // app.provide("metaFormModel", options?.model);
     }
 }
-export { MetaForm, VCalendar };
+export { Vormix, VCalendar };

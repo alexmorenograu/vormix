@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./assets/main.css";
 
-import MetaFormPlugin from './MetaFormPlugin.js';
+import VormixPlugin from './VormixPlugin.js';
 
 createApp(App)
-    .use(MetaFormPlugin)
+    .use(VormixPlugin)
     .mount("#app");
