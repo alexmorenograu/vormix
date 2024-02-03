@@ -4,8 +4,8 @@
             <v-text-field v-model="parsedModel" :label="$.label" :variant="$.variant" :clearable="$.clearable"
                 :rules="$.rules" @click="() => show = !show" v-bind="props" class="mb-2" @click:clear="model = null" />
         </template>
-        <v-list>
-            <v-list-item class="flex justify-center">
+        <v-list class="flexCenter">
+            <v-list-item class="flexCenter">
                 <Calendar v-model="model" inline :show-time="$.showTime" />
             </v-list-item>
         </v-list>
@@ -14,7 +14,6 @@
 
 <script setup>
 import { computed, ref, watch } from 'vue'
-import Calendar from 'primevue/calendar';
 
 const model = defineModel()
 const parsedModel = computed(() => model.value && new Date(model.value).toLocaleString())
@@ -54,5 +53,11 @@ const $ = defineProps({
     background: inherit;
     border: 2px solid rgb(255, 255, 255, 0.3);
     padding: 5px;
+}
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

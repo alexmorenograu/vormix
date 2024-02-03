@@ -1,8 +1,8 @@
 <template>
-    <v-card class="p-3" :title="model.name">
+    <v-card style="padding: 10px;" :title="model?.name">
         <!-- <keep-alive> -->
         <div class="mt-6 grid grid-cols-2 md:grid-cols-1 gap-2">
-            <div v-for="field in model.fields" :key="field.name">
+            <div v-for="field in model?.fields" :key="field.name">
                 <component :is="field.component" v-bind="field" v-model="model.data[field.name]" />
             </div>
         </div>
@@ -24,46 +24,56 @@
 </template>
 
 <script setup>
-import { VBtn } from 'vuetify/components'
-import styler from '../core/styler.js'
-import parser from '../core/parser.js'
-import { onMounted } from 'vue'
+import styler from "../core/styler.js";
+import parser from "../core/parser.js";
+import { watch } from "vue";
+
+const model = defineModel({});
+let originalModel;
 
 const $ = defineProps({
-    model: {
-        type: Object,
-        required: true
-    },
     saveFn: {
         type: Function,
         // default: (v) => console.log(v)
     },
     isNew: {
         type: Boolean,
-        default: true
+        default: true,
     },
     saveBtn: {
         type: Boolean,
-        default: true
+        default: true,
     },
     resetBtn: {
         type: Boolean,
-        default: true
+        default: true,
     },
     defaultBtn: {
         type: Boolean,
-        default: true
-    }
-})
+        default: true,
+    },
+});
 
-let originalValue;
-onMounted(() => {
-    $.model = parser($.model, $.isNew)
-    $.model.fields = styler($.model)
-    originalValue = JSON.parse(JSON.stringify($.model.data))
-})
+watch(
+    () => model,
+    (newVal) => { if (newVal.value && !newVal.value.parsed) builder(newVal.value); },
+    { immediate: true, deep: true }
+);
+
+function builder(modelValue) {
+    let builtModel = parser(modelValue, $.isNew)
+    builtModel.fields = styler(builtModel)
+
+    originalModel = JSON.parse(JSON.stringify(builtModel.data))
+    return model.value = builtModel
+}
 
 function reset() {
-    $.model.data = JSON.parse(JSON.stringify(originalValue))
+    $.model.data = JSON.parse(JSON.stringify(originalModel));
 }
 </script>
+<style>
+@import "primevue/resources/themes/aura-dark-green/theme.css";
+@import "@mdi/font/css/materialdesignicons.css";
+@import "../assets/tailwind.css";
+</style>

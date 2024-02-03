@@ -5,7 +5,7 @@
                 {{ JSON.stringify(vanillaModel, null, 2) }}
             </pre>
         </v-card>
-        <MetaForm :model />
+        <MetaForm v-model="model" />
         <v-card title="Output">
             <pre class="mt-6 text-sky-600 text-xs">
                 {{ JSON.stringify(model, null, 2) }}
@@ -14,7 +14,6 @@
     </div>
 </template>
 <script setup>
-import MetaForm from './MetaForm.vue'
 import { ref } from 'vue'
 
 const stringField = {

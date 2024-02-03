@@ -1,5 +1,7 @@
 export default (model, isNew) => {
     for (const field of model.fields) {
+        if (!field.fieldType) continue
+
         // if isNew set default value
         if (isNew && field.default) model.data[field.name] = field.default;
 
@@ -28,14 +30,16 @@ export default (model, isNew) => {
                 break;
             case "relation":
                 field.component = "VAutocomplete";
-                field.items = field.values.map((value) =>
-                    Object.values(value).join(" - "),
-                );
                 field.clearable = true;
+                field.items = field.values
+                    ? field.values.map((value) => Object.values(value).join(" - "))
+                    : []
                 break;
             default:
                 console.warn(field.fieldType, "type is not implemented yet");
         }
     }
+
+    model.parsed = true
     return model;
 };

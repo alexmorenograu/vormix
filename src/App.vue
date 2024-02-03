@@ -7,7 +7,7 @@ import ExampleCode from './components/ExampleCode.vue'
     <header>
         <img alt="Vue logo" class="logo" src="./assets/metaform.png" width="125" height="125" />
         <div class="wrapper">
-            <LeftIndex msg="MetaForm" />
+            <LeftIndex msg="Metaform" />
         </div>
     </header>
     <main class="mt-5">

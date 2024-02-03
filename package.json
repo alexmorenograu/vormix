@@ -1,15 +1,11 @@
 {
     "name": "metaform",
-    "version": "0.0.1",
-    "private": true,
+    "version": "0.1.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview"
-    },
-    "imports": {
-        "#components/*": "./src/components/*"
     },
     "dependencies": {
         "@mdi/font": "^7.4.47",
@@ -23,6 +19,23 @@
         "autoprefixer": "^10.4.17",
         "postcss": "^8.4.33",
         "tailwindcss": "^3.4.1",
-        "vite": "^5.0.10"
-    }
+        "vite": "^5.0.10",
+        "vite-plugin-dts": "^3.7.2"
+    },
+    "peerDependencies": {
+        "vue": "^3.0.0"
+    },
+    "main": "./dist/metaform.cjs",
+    "module": "./dist/metaform.js",
+    "exports": {
+        ".": "./dist/metaform.js",
+        "./styles.css": "./dist/style.css"
+    },
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "form",
+        "form builder"
+    ]
 }
