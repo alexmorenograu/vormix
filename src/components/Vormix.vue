@@ -32,13 +32,13 @@ const model = defineModel({});
 let originalModel;
 
 const $ = defineProps({
-    saveFn: {
-        type: Function,
-        // default: (v) => console.log(v)
-    },
     isNew: {
         type: Boolean,
         default: true,
+    },
+    saveFn: {
+        type: Function,
+        // default: (v) => console.log(v)
     },
     saveBtn: {
         type: Boolean,

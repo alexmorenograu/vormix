@@ -58,6 +58,11 @@ Restructure CSS ✅
 Exportable ✅
 Better readme ✅
 
+# v0.1.0 +
+
+Better readme ✅
+Publish in npm ✅
+
 # Nexts
 
 Better Relation component

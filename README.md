@@ -39,29 +39,102 @@ createApp(App)
   .mount("#app");
 ```
 
-## Project Setup
+### Use in code
 
-```sh
-npm install
+<img width="180" src="https://exposerjs-docs.onrender.com/vormix-readme.png" alt="Vormix explanation">
+
+Code
+
+```vue
+<script setup>
+import { ref } from "vue";
+const myModel = ref({
+  name: "Book", // ← Title (or name of entity)
+  fields: [
+    {
+      label: "Name", // ← Label of field
+      name: "name", // ← Name of field
+      fieldType: "String", // ← Field type can be [String, Int, Boolean, Datetime, Realtion]
+    },
+    {
+      name: "likeVormix",
+      fieldType: "Boolean",
+    },
+    {
+      name: "age",
+      fieldType: "Int",
+      default: 23, // ← Default value (Only apply if when <Vormix :is-new="true"/>)
+    },
+    {
+      name: "birth",
+      fieldType: "Datetime",
+      isRequired: true, // ← If field is Required
+    },
+    {
+      name: "country",
+      fieldType: "Relation",
+      values: [
+        { id: 1, name: "EEUU" },
+        { id: 2, name: "Spain" },
+      ], // ← For relations
+    },
+  ],
+  data: {
+    name: "This is a current value", // ← Current value
+  },
+});
+</script>
+<template>
+  <Vormix v-model="myModel" />
+</template>
 ```
 
-### Compile and Hot-Reload for Development
+### Vormix v-model fields props:
 
-```sh
-npm run dev
+```json
+    {
+      label, // ← Label of field (If it is null, it is given the value of "name" field)
+      name, // ← Name of field (Required)
+      fieldType, // ← Field type can be [String, Int, Boolean, Datetime, Realtion] (Required)
+      isRequired, // ← If field is Required (default false)
+      default, // ← Default value (Only apply if when <Vormix :is-new="true"/>)
+      values, // ← Only required for relations
+    }
 ```
 
-### Compile and Minify for Production
+### Vormix component props:
 
-```sh
-npm run build
+```json
+{
+    isNew: {
+        type: Boolean,
+        default: true,
+    },
+    saveFn: {
+        type: Function,
+    },
+    saveBtn: {
+        type: Boolean,
+        default: true,
+    },
+    resetBtn: {
+        type: Boolean,
+        default: true,
+    },
+    defaultBtn: {
+        type: Boolean,
+        default: true,
+    },
+}
 ```
 
-### Format
-
-```sh
-bunx @biomejs/biome format --write ./src
-```
+- v-model: entity model
+- is-new: if is new instance (apply default values)
+- save-fn: funcion called when click in save button
+- save-btn: if show save button
+- reset-btn: if show reset button
+- default-btn: if false it does not show any button (It would be the same as
+  {save-btn: false, reset-btn: false})
 
 ### Use
 
@@ -72,3 +145,5 @@ bunx @biomejs/biome format --write ./src
 - [Styling - Tailwind](https://tailwindcss.com/)
 - [Icons - Pictogrammers](https://pictogrammers.com/)
 - [Linter && Formatter - Biome](https://biomejs.dev/)
+
+### 💻 For development see the file DEV.md
