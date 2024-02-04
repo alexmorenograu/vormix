@@ -1,7 +1,11 @@
 {
     "name": "vormix",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "module",
+    "author": "Alex Moreno",
+    "description": "Vue form generator",
+    "homepage": "https://github.com/alexmorenograu/vormix",
+    "repository": "alexmorenograu/vormix",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -36,6 +40,8 @@
     ],
     "keywords": [
         "form",
-        "form builder"
+        "vue form",
+        "form builder",
+        "form generator"
     ]
 }
