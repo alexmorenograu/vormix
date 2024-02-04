@@ -41,7 +41,9 @@ createApp(App)
 
 ### Use in code
 
-<img width="180" src="https://exposerjs-docs.onrender.com/vormix-readme.png" alt="Vormix explanation">
+<p align="center">
+    <img width="700" src="https://exposerjs-docs.onrender.com/vormix-readme.png" alt="Vormix explanation">
+</p>
 
 Code
 
@@ -91,7 +93,7 @@ const myModel = ref({
 
 ### Vormix v-model fields props:
 
-```json
+```js
     {
       label, // ← Label of field (If it is null, it is given the value of "name" field)
       name, // ← Name of field (Required)
@@ -104,7 +106,7 @@ const myModel = ref({
 
 ### Vormix component props:
 
-```json
+```js
 {
     isNew: {
         type: Boolean,
