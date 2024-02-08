@@ -1,3 +1,7 @@
+---
+✅ feature 🔃 change 🐛 fix ⚠️ partial
+---
+
 # v0.0.1
 
 Implement basic types
@@ -62,6 +66,11 @@ Better readme ✅
 
 Better readme ✅
 Publish in npm ✅
+
+# v0.1.1
+
+🔃 Rename VCalendar to VXCalendar
+🐛 Fix props save-btn & reset-btn
 
 # Nexts
 

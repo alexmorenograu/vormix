@@ -10,11 +10,11 @@
         <slot name="more"></slot>
         <slot name="actions">
             <div class="grid grid-flow-col gap-2 auto-cols-min justify-end">
-                <v-btn prepend-icon="mdi-reload" class="p-2" @click="reset()" v-if="saveBtn && defaultBtn">
+                <v-btn prepend-icon="mdi-reload" class="p-2" @click="reset()" v-if="resetBtn && defaultBtn">
                     Reset
                 </v-btn>
                 <v-btn prepend-icon="mdi-content-save" class="p-2" @click="saveFn && saveFn(model.data)"
-                    v-if="resetBtn && defaultBtn">
+                    v-if="saveBtn && defaultBtn">
                     Save
                 </v-btn>
                 <slot name="moreActions"></slot>

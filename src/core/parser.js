@@ -25,7 +25,7 @@ export default (model, isNew) => {
                 if (!field.isRequired) field.indeterminate = true;
                 break;
             case "datetime":
-                field.component = "VCalendar";
+                field.component = "VXCalendar";
                 field.clearable = true;
                 break;
             case "relation":

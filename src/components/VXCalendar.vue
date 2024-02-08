@@ -6,7 +6,7 @@
         </template>
         <v-list class="flexCenter">
             <v-list-item class="flexCenter">
-                <Calendar v-model="model" inline :show-time="$.showTime" />
+                <PVCalendar v-model="model" inline :show-time="$.showTime" />
             </v-list-item>
         </v-list>
     </v-menu>

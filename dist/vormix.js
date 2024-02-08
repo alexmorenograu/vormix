@@ -5866,7 +5866,7 @@ function Im(e, t, n, a, l, i) {
 }
 Is.render = Im;
 const Tm = {
-  __name: "VCalendar",
+  __name: "VXCalendar",
   props: /* @__PURE__ */ fs({
     label: {
       type: String
@@ -5901,7 +5901,7 @@ const Tm = {
     });
     const l = e;
     return (i, r) => {
-      const o = Mt("v-text-field"), s = Mt("Calendar"), u = Mt("v-list-item"), d = Mt("v-list"), v = Mt("v-menu");
+      const o = Mt("v-text-field"), s = Mt("PVCalendar"), u = Mt("v-list-item"), d = Mt("v-list"), v = Mt("v-menu");
       return J(), Ye(v, {
         modelValue: a.value,
         "onUpdate:modelValue": r[4] || (r[4] = (f) => a.value = f),
@@ -5962,7 +5962,7 @@ const Tm = {
         n.component = "VCheckbox", n.isRequired || (n.indeterminate = !0);
         break;
       case "datetime":
-        n.component = "VCalendar", n.clearable = !0;
+        n.component = "VXCalendar", n.clearable = !0;
         break;
       case "relation":
         n.component = "VAutocomplete", n.clearable = !0, n.items = n.values ? n.values.map((l) => Object.values(l).join(" - ")) : [];
@@ -5975,13 +5975,13 @@ const Tm = {
 }, Mm = { class: "mt-6 grid grid-cols-2 md:grid-cols-1 gap-2" }, Bm = { class: "grid grid-flow-col gap-2 auto-cols-min justify-end" }, Em = {
   __name: "Vormix",
   props: /* @__PURE__ */ fs({
-    saveFn: {
-      type: Function
-      // default: (v) => console.log(v)
-    },
     isNew: {
       type: Boolean,
       default: !0
+    },
+    saveFn: {
+      type: Function
+      // default: (v) => console.log(v)
     },
     saveBtn: {
       type: Boolean,
@@ -6041,7 +6041,7 @@ const Tm = {
             Be(r.$slots, "more"),
             Be(r.$slots, "actions", {}, () => [
               we("div", Bm, [
-                e.saveBtn && e.defaultBtn ? (J(), Ye(s, {
+                e.resetBtn && e.defaultBtn ? (J(), Ye(s, {
                   key: 0,
                   "prepend-icon": "mdi-reload",
                   class: "p-2",
@@ -6052,7 +6052,7 @@ const Tm = {
                   ]),
                   _: 1
                 })) : Ie("", !0),
-                e.resetBtn && e.defaultBtn ? (J(), Ye(s, {
+                e.saveBtn && e.defaultBtn ? (J(), Ye(s, {
                   key: 1,
                   "prepend-icon": "mdi-content-save",
                   class: "p-2",
@@ -26559,11 +26559,11 @@ const US = {
   }
 }), XS = {
   install: (e, t) => {
-    e.use(GS), e.use(bf), e.component("Calendar", Is), e.component("VCalendar", Tm), e.component("Vormix", Em);
+    e.use(GS), e.use(bf), e.component("PVCalendar", Is), e.component("VXCalendar", Tm), e.component("Vormix", Em);
   }
 };
 export {
-  Tm as VCalendar,
+  Tm as VXCalendar,
   Em as Vormix,
   XS as default
 };

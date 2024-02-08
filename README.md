@@ -48,6 +48,9 @@ createApp(App)
 Code
 
 ```vue
+<template>
+  <Vormix v-model="myModel" />
+</template>
 <script setup>
 import { ref } from "vue";
 const myModel = ref({
@@ -86,9 +89,6 @@ const myModel = ref({
   },
 });
 </script>
-<template>
-  <Vormix v-model="myModel" />
-</template>
 ```
 
 ### Vormix v-model fields props:
