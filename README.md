@@ -127,6 +127,10 @@ const myModel = ref({
         type: Boolean,
         default: true,
     },
+    parser: {
+        type: Function,
+        default: null,
+    },
 }
 ```
 
@@ -137,6 +141,12 @@ const myModel = ref({
 - reset-btn: if show reset button
 - default-btn: if false it does not show any button (It would be the same as
   {save-btn: false, reset-btn: false})
+- parser: you can pass a function to replace the native parser
+
+### VormixSK
+
+If you want to use vormix without it being embedded in a card, you can use VormixSK.
+Returns only the components inside the form.
 
 ### Use
 

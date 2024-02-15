@@ -3,7 +3,7 @@
         <!-- <keep-alive> -->
         <div class="mt-6 grid grid-cols-2 md:grid-cols-1 gap-2">
             <div v-for="field in model?.fields" :key="field.name">
-                <component :is="field.component" v-bind="field" v-model="model.data[field.name]" />
+                <component :is="field.component" v-bind="field" v-model="model.data[field.name]" clearable />
             </div>
         </div>
         <!-- </keep-alive> -->
@@ -26,10 +26,10 @@
 <script setup>
 import styler from "../core/styler.js";
 import parser from "../core/parser.js";
-import { watch } from "vue";
+import { watch, ref } from "vue";
 
 const model = defineModel({});
-let originalModel;
+const originalModel = ref({});
 
 const $ = defineProps({
     isNew: {
@@ -52,6 +52,10 @@ const $ = defineProps({
         type: Boolean,
         default: true,
     },
+    parser: {
+        type: Function,
+        default: null,
+    },
 });
 
 watch(
@@ -61,15 +65,18 @@ watch(
 );
 
 function builder(modelValue) {
-    let builtModel = parser(modelValue, $.isNew)
+    let builtModel = $.parser
+        ? $.parser(modelValue, $.isNew)
+        : parser(modelValue, $.isNew);
+
     builtModel.fields = styler(builtModel)
 
-    originalModel = JSON.parse(JSON.stringify(builtModel.data))
+    originalModel.value = JSON.parse(JSON.stringify(builtModel.data))
     return model.value = builtModel
 }
 
 function reset() {
-    $.model.data = JSON.parse(JSON.stringify(originalModel));
+    model.value.data = JSON.parse(JSON.stringify(originalModel.value));
 }
 </script>
 <style>
