@@ -2,85 +2,46 @@
     <v-card style="padding: 10px;" :title="model?.name">
         <!-- <keep-alive> -->
         <div class="mt-6 grid grid-cols-2 md:grid-cols-1 gap-2">
-            <div v-for="field in model?.fields" :key="field.name">
-                <component :is="field.component" v-bind="field" v-model="model.data[field.name]" clearable />
-            </div>
+            <VormixSK ref="vormixSkRef" v-model="model" v-bind="$attrs" />
         </div>
         <!-- </keep-alive> -->
         <slot name="more"></slot>
         <slot name="actions">
             <div class="grid grid-flow-col gap-2 auto-cols-min justify-end">
-                <v-btn prepend-icon="mdi-reload" class="p-2" @click="reset()" v-if="resetBtn && defaultBtn">
-                    Reset
+                <slot name="beforeActions"></slot>
+                <v-btn v-for="button of buttons" :key="index" v-bind="button.attrs" :prepend-icon="button.icon">
+                    {{ button.title }}
                 </v-btn>
-                <v-btn prepend-icon="mdi-content-save" class="p-2" @click="saveFn && saveFn(model.data)"
-                    v-if="saveBtn && defaultBtn">
-                    Save
-                </v-btn>
-                <slot name="moreActions"></slot>
+                <slot name="actions">
+                    <v-btn prepend-icon="mdi-reload" @click="vormixSkRef.reset()" v-if="resetBtn">
+                        Reset
+                    </v-btn>
+                </slot>
+                <slot name="afterActions"></slot>
             </div>
         </slot>
     </v-card>
 </template>
-
 <script setup>
-import styler from "../core/styler.js";
-import parser from "../core/parser.js";
-import { watch, ref } from "vue";
+import VormixSK from "./VormixSK.vue";
+import { ref } from "vue";
 
 const model = defineModel({});
-const originalModel = ref({});
-
 const $ = defineProps({
-    isNew: {
-        type: Boolean,
-        default: true,
-    },
-    saveFn: {
-        type: Function,
-        // default: (v) => console.log(v)
-    },
-    saveBtn: {
-        type: Boolean,
-        default: true,
-    },
     resetBtn: {
         type: Boolean,
         default: true,
     },
-    defaultBtn: {
-        type: Boolean,
-        default: true,
-    },
-    parser: {
-        type: Function,
-        default: null,
+    buttons: {
+        type: Array,
+        default: () => [],
     },
 });
 
-watch(
-    () => model,
-    (newVal) => { if (newVal.value && !newVal.value.parsed) builder(newVal.value); },
-    { immediate: true, deep: true }
-);
-
-function builder(modelValue) {
-    let builtModel = $.parser
-        ? $.parser(modelValue, $.isNew)
-        : parser(modelValue, $.isNew);
-
-    builtModel.fields = styler(builtModel)
-
-    originalModel.value = JSON.parse(JSON.stringify(builtModel.data))
-    return model.value = builtModel
-}
-
-function reset() {
-    model.value.data = JSON.parse(JSON.stringify(originalModel.value));
-}
+const vormixSkRef = ref()
 </script>
 <style>
-@import "primevue/resources/themes/aura-dark-green/theme.css";
+/* @import "primevue/resources/themes/aura-dark-green/theme.css"; */
 @import "@mdi/font/css/materialdesignicons.css";
 @import "../assets/tailwind.css";
 </style>

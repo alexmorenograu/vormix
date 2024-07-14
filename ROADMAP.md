@@ -1,6 +1,13 @@
 ---
-✅ feature 🔃 change 🐛 fix ⚠️ partial
+✅ Feature  🔃 Change  🐛 Fix  ⚠️ Partial ❗Breaking change
 ---
+
+# v0.2.0
+
+🔃❗ Unified props "saveFn", "saveBtn", "defaultBtn" props in "buttons"
+🔃❗ Replace "moreActions" slots by "beforeActions", "afterActions" and "Actions" slots
+✅ VormixSK expose default reset function
+🔃 Vormix use VormixSK
 
 # v0.1.3
 
@@ -14,16 +21,16 @@
 
 # v0.1.1
 
-Better readme ✅
-Publish in npm ✅
+✅ Better readme 
+✅ Publish in npm
 
 # v0.1.0 Exportable version 📦
 
-Restructure Imports ✅
-Use Vue.defineModel() ✅
-Restructure CSS ✅
-Exportable ✅
-Better readme ✅
+✅ Restructure Imports
+✅ Use Vue.defineModel()
+✅ Restructure CSS
+✅ Exportable
+✅ Better readme
 
 # v0.0.4
 
@@ -78,13 +85,6 @@ Implement basic types
 - Relation ✅
 
 # Nexts
-
-Better Relation component
-(separate real value from visible value)
-
-Actions in JS
-
-- Save
-- Reset
-
+Better Relation component(separate real value from visible value)
+Use VDatePicker and stop using primeVue/Calendar
 Styler adaptable

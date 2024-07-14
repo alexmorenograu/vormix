@@ -104,26 +104,66 @@ const myModel = ref({
     }
 ```
 
-### Vormix component props:
-
+### Vormix component:
+#### Props
 ```js
 {
     isNew: {
         type: Boolean,
         default: true,
     },
-    saveFn: {
+    parser: {
         type: Function,
-    },
-    saveBtn: {
-        type: Boolean,
-        default: true,
+        default: null,
     },
     resetBtn: {
         type: Boolean,
         default: true,
     },
-    defaultBtn: {
+    buttons: {
+        type: Array,
+        default: () => [],
+    },
+}
+
+/*
+buttons examples
+// {
+//     title: 'Save',
+//     icon: 'mdi-content-save',
+//     attrs: {class="myClass"},
+//     fn: () => save,
+// },
+// {
+//     title: 'Reset',
+//     icon: 'mdi-reload',
+//     attrs: {class="myClass"},
+//     fn: () => reset,
+// },      
+*/
+```
+#### Slots
+```html
+<template #before-actions></template>
+<template #actions></template>
+<template #after-actions></template>
+```
+
+- v-model: entity model
+- is-new: if is new instance (apply default values)
+- reset-btn: if show reset button
+- buttons: array of buttons
+- parser: you can pass a function to replace the native parser
+
+### VormixSK
+
+If you want to use vormix without it being embedded in a card, you can use VormixSK.
+Returns only the components inside the form.
+
+#### Props
+```js
+{
+    isNew: {
         type: Boolean,
         default: true,
     },
@@ -133,20 +173,6 @@ const myModel = ref({
     },
 }
 ```
-
-- v-model: entity model
-- is-new: if is new instance (apply default values)
-- save-fn: funcion called when click in save button
-- save-btn: if show save button
-- reset-btn: if show reset button
-- default-btn: if false it does not show any button (It would be the same as
-  {save-btn: false, reset-btn: false})
-- parser: you can pass a function to replace the native parser
-
-### VormixSK
-
-If you want to use vormix without it being embedded in a card, you can use VormixSK.
-Returns only the components inside the form.
 
 ### Use
 

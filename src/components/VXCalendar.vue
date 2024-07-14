@@ -1,12 +1,12 @@
 <template>
     <v-menu v-model="show" :close-on-content-click="false">
         <template v-slot:activator="{ props }">
-            <v-text-field v-model="parsedModel" :label="$.label" :variant="$.variant" :clearable="$.clearable"
-                :rules="$.rules" @click="() => show = !show" v-bind="props" class="mb-2" @click:clear="model = null" />
+            <v-text-field v-model="parsedModel" :label :variant :clearable :rules @click="() => show = !show"
+                v-bind="props" class="mb-2" @click:clear="model = null" />
         </template>
         <v-list class="flexCenter">
             <v-list-item class="flexCenter">
-                <PVCalendar v-model="model" inline :show-time="$.showTime" />
+                <PVCalendar v-model="model" inline :show-time />
             </v-list-item>
         </v-list>
     </v-menu>
@@ -41,10 +41,6 @@ const $ = defineProps({
     showTime: {
         type: Boolean,
         default: true
-    },
-    timeOnly: {
-        type: Boolean,
-        default: false
     },
 })
 </script>

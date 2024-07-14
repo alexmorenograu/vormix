@@ -7,7 +7,9 @@
 <script setup>
 import styler from "../core/styler.js";
 import parser from "../core/parser.js";
-import { watch } from "vue";
+import { ref, watch } from "vue";
+
+defineExpose({ reset })
 
 const model = defineModel({});
 const $ = defineProps({
@@ -21,6 +23,8 @@ const $ = defineProps({
     },
 });
 
+const originalModel = ref({});
+
 watch(
     () => model,
     (newVal) => { if (newVal.value && !newVal.value.parsed) builder(newVal.value); },
@@ -33,10 +37,15 @@ function builder(modelValue) {
         : parser(modelValue, $.isNew);
 
     builtModel.fields = styler(builtModel)
+    originalModel.value = JSON.parse(JSON.stringify(builtModel.data))
     return model.value = builtModel
+}
+
+function reset() {
+    model.value.data = { ...originalModel.value };
 }
 </script>
 <style>
-@import "primevue/resources/themes/aura-dark-green/theme.css";
+/* @import "primevue/resources/themes/aura-dark-green/theme.css"; */
 @import "@mdi/font/css/materialdesignicons.css";
 </style>
